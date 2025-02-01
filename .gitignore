@@ -1,0 +1,23 @@
+# Os specific file
+.DS_Store
+Thumbs.db
+
+# Chache
+__chace__/
+*.pyc
+*.pyo
+
+# sample file
+*.xlsx
+*.csv
+
+# Virtual Environment
+.venv/
+
+# IDE
+.idea/
+.vscode/
+
+# Logs
+*.log
+*.stackdump
