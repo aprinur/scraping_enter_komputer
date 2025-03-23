@@ -25,24 +25,27 @@ def get_url():
             result.append(i)
         else:
             same_url.append(i)
-    print('result', len(result))
-    print('same url', len(same_url))
 
 
 def main():
-    url = 'https://www.enterkomputer.com/pc-ready'
-    html = get_html(url)
-    soup = Soup(html)
-    urls = soup.get_urls()
-    output = []
-    for url in urls:
-        print(url)
+    try:
+        url = 'https://enterkomputer.com/pc-ready'
         html = get_html(url)
+        if not html:
+            return f'Scraping failed'
         soup = Soup(html)
-        items = soup.scrape()
-        output.append(items)
+        urls = soup.get_urls()
+        output = []
+        for url in urls:
+            time.sleep(5)
+            html = get_html(url)
+            soup = Soup(html)
+            items = soup.scrape()
+            output.append(items)
 
-    save_to_file(output, 'Pc_ready_91_page')
+        save_to_file(output, 'Pc_ready_91_page')
+    except Exception as e:
+        print(f'main function error: {e}')
 
 
 if __name__ == '__main__':
